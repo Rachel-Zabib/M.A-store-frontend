@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './contactUs.css'
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import axios from 'axios';
 
 
 export default class ContactUs extends Component {
@@ -19,6 +20,7 @@ export default class ContactUs extends Component {
         this.phoneLabelRef=React.createRef();
         this.messageRef=React.createRef();
         this.modalContactRef=React.createRef();
+        this.modalFailureRef=React.createRef();
     }
 
     contactBtnClicked(){
@@ -52,14 +54,24 @@ export default class ContactUs extends Component {
                 phone:this.phoneInputRef.current.value,
                 message: this.messageRef.current.value  
             }
-            //שמירה בבסיס נתונים את הפניה ****
+            //send the ticket to the server(the server save in db and send a email)
+            axios.post("http://localhost:4000/api/tickets",objContact).then((res)=>{
+                 //show the modal of sucsses
+                let MyModalEl = this.modalContactRef.current
+                var myModal = new bootstrap.Modal(MyModalEl, {
+                    keyboard: false
+                })
+                myModal.show()
+            }).catch((err)=>{
+                    //show the modal of failed
+                    let MyModalEl = this.modalFailureRef.current
+                    var myModal = new bootstrap.Modal(MyModalEl, {
+                        keyboard: false
+                    })
+                    myModal.show()
+            })
 
-            //show the modal of sucsses
-            let MyModalEl = this.modalContactRef.current
-            var myModal = new bootstrap.Modal(MyModalEl, {
-                keyboard: false
-              })
-            myModal.show()
+           
         }
         else
             window.scrollTo(0, 0);
@@ -86,7 +98,7 @@ export default class ContactUs extends Component {
                     <button id="contactBtn" onClick={this.contactBtnClicked.bind(this)}>Contact Us</button>
                   
                </div>
-                {/* modal */}
+                {/* modal success */}
                 <div ref={this.modalContactRef} class="modal fade" id={`modalContactId`} tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" style={{maxWidth: "400px"}}>
                         <div class="modal-content" style={{padding:"50px"}}>
@@ -95,6 +107,21 @@ export default class ContactUs extends Component {
                                     <h3>your message send</h3>
                                     <p>Customer service will get back to you within 48 hours</p>
                                     <a href="/">Back to home</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 {/* modal failed */}
+                 <div ref={this.modalFailureRef} class="modal fade" id={`modalFailureId`} tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" style={{maxWidth: "400px"}}>
+                        <div class="modal-content" style={{padding:"50px"}}>
+                            <div class="modal-body">
+                                <div className="modalstyle">
+                                    <h3>Your message failed</h3>
+                                    <p>Please try sending again</p>
                                 </div>
                                 
                             </div>

@@ -17,6 +17,7 @@
     "query-string": "^6.13.8",
     "ra-data-firebase-client": "^3.0.0",
     "ra-data-json-server": "^3.13.1",
+    "ra-data-simple-rest": "^3.13.4",
     "react": "^17.0.1",
     "react-admin": "^3.13.1",
     "react-admin-firebase": "^3.2.17",

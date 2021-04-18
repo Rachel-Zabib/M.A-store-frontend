@@ -34,7 +34,8 @@ import {auth,db} from "./fireBase.config"
 import ProtectedRoutes from './components/ProtectedRoutes/ProtectedRoutes';
 import AdminPage from './admin/AdminPage/AdminPage';
 import ProtectedRouteCheckout from './components/ProtectedRouteCheckout/ProtectedRouteCheckout';
-
+import ProtectedRouteAdmin from './components/ProtectedRouteAdmin/ProtectedRouteAdmin';
+import Loading from './components/Loading/Loading'
 
  class App extends Component {
   constructor(props){
@@ -184,7 +185,7 @@ import ProtectedRouteCheckout from './components/ProtectedRouteCheckout/Protecte
                           :<Route exact  path="/account/profile" component={()=>null}/> 
                         }
 
-                        <Route exact  path="/admin" component={AdminPage}/>
+                        <ProtectedRouteAdmin  path="/admin" component={AdminPage}/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>
@@ -195,7 +196,7 @@ import ProtectedRouteCheckout from './components/ProtectedRouteCheckout/Protecte
     </Router>
     )
     //loading***
-    else return null
+    else return <Loading/>
   
   }
 }

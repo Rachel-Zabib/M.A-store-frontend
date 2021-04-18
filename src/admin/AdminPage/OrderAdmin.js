@@ -42,7 +42,7 @@ export const OrderEdit = props => (
         <SimpleForm>
             <TextInput disabled source="id" />
             <SelectInput source="status" choices={[
-                { id: 'ordered', name: 'received' },
+                { id: 'received', name: 'received' },
                 { id: 'in process', name: 'in process' },
                 { id: 'approved', name: 'approved' },
                 { id: 'sent', name: 'sent' },
@@ -69,7 +69,6 @@ export const OrderShow = props => (
                     <TextField source="headerProduct" />
                     <NumberField source="amountProduct" />
                     <TextField source="brandProduct" />
-                    <TextField source="discountProduct" />
                     <TextField source="priceProduct" />
                     <ImageField source="imgProduct"  title=""/>
                 </Datagrid>

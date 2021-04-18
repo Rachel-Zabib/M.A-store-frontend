@@ -88,14 +88,14 @@ export const ProductsEdit = props => (
 export const ProductsCreate = props => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="headerProduct" />
-            <SelectInput source="brandProduct" choices={[
+            <TextInput label="HeaderProduct*" source="headerProduct" />
+            <SelectInput label="BrandProduct*" source="brandProduct" choices={[
                 { id: 'MAC', name: 'MAC' },
                 { id: 'LORIAL PARIS', name: 'LORIAL PARIS' },
                 { id: 'BOBBI BROWN', name: 'BOBBI BROWN' },
                 { id: 'IL MAKIAGE', name: 'IL MAKIAGE' },
             ]} /> 
-           <SelectInput source="categoryProduct" choices={[
+           <SelectInput label="CategoryProduct*" source="categoryProduct" choices={[
                 { id: 'Lips', name: 'Lips' },
                 { id: 'Face', name: 'Face' },
                 { id: 'Eyse', name: 'Eyse' },
@@ -105,11 +105,11 @@ export const ProductsCreate = props => (
             <TextInput source="imgSrc[1]" />
             <TextInput source="imgSrc[2]" />
             <NumberInput source="buyNum" />
-            <SelectInput source="stockProduct" choices={[
+            <SelectInput label="StockProduct*" source="stockProduct" choices={[
                 { id: 'in stock', name: 'in stock' },
                 { id: 'sold out', name: 'sold out' },
             ]} /> 
-            <TextInput source="priceProduct" />
+            <TextInput label="PriceProduct*" source="priceProduct" />
             <TextInput source="discountProduct" />
             <TextInput source="shortExplanation" />
             <TextInput source="explanationproduct" />

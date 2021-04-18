@@ -13,6 +13,7 @@ import {
     ReferenceInput,
     BulkDeleteButton,
     Filter,
+    PasswordInput 
 } from 'react-admin';
 import ActiveField from "./ActiveField";
 
@@ -41,7 +42,7 @@ export const UserList = props => (
     </List>
 );
 export const UserEdit = props => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
         <TextInput source="firstName" />
             <TextInput source="lastName" />
@@ -66,9 +67,10 @@ export const UserEdit = props => (
 export const UserCreate = props => (
     <Create {...props}>
         <SimpleForm>
-             <TextInput source="firstName" />
+            <TextInput source="firstName" />
             <TextInput source="lastName" />
             <TextInput source="email" />
+            <PasswordInput source="password" />
             <TextInput source="phone" />
             <TextInput source="city" />
             <TextInput source="street" />

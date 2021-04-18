@@ -84,7 +84,7 @@ class SignUp extends Component {
     signUpClicked=()=>{
         let email=this.emailInputRef.current.value;
         let password=this.passInputRef.current.value;
-        auth.createUserWithEmailAndPassword(email, password)//נצטרך להוסיף גם את השם למשתמש
+        auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             var user = userCredential.user;
             this.saveAndHistory(user);
@@ -127,9 +127,10 @@ class SignUp extends Component {
         this.props.history.push(this.props.actionForm);//default to home or payment
      }
      saveInRealTimeDB(user){
+        
         let userDetails={
-            id:user.uid,
-            firstName:this.nameInputRef.current.value,
+            id:user.uid,//*** 
+            firstName:(this.nameInputRef.current.value.length!=0)?this.nameInputRef.current.value.length:user.displayName,
             lastName:this.lastNameInputRef.current.value,
             email:this.emailInputRef.current.value,
             phone:"",
@@ -139,7 +140,8 @@ class SignUp extends Component {
             apartment:"",
             post:"",
             active:"true",
-            role:"user"
+            role:"user",
+            //password and if with google so google id***
           }
         
           db.ref('users/' + user.uid).set(userDetails);

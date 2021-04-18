@@ -14,6 +14,7 @@ class Header extends Component{
       this.totalItems=this.totalItems.bind(this);
       this.deleteItem=this.deleteItem.bind(this);
    }
+   
 
    deleteItem(headerOfProduct){
       let arrCart=[...this.props.localStorageArr];
@@ -44,7 +45,7 @@ class Header extends Component{
    signOutBtnClicked=()=>{
       auth.signOut().then(() => {
          this.props.removeUser();//call action to remove user from global state
-         // this.props.history.push("/")
+         // this.props.history.push("/")***
        }).catch((error) => {
              alert(error," try again");
        });

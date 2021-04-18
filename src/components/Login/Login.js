@@ -63,7 +63,6 @@ import {saveUser} from '../../actions/userAction'
         });
      }
      saveAndHistory=(user)=>{
-        // localStorage.setItem("user",user.email)
         this.props.saveUser(user);//call action to save in user global state
 
           //בדיקה האם המשתמש הזה הוא מנהל ונעביר אותו ל ***

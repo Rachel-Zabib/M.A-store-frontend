@@ -11,6 +11,9 @@ export default class OrderNumber extends Component {
         localStorage.removeItem("objOrder");
         this.props.history.push("/");
     }
+    componentWillUnmount(){
+        localStorage.removeItem("objOrder");
+    }
     render() {
         return (
             <div className="OrderNumberDiv">

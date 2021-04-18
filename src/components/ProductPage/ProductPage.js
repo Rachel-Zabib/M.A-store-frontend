@@ -3,6 +3,7 @@ import './productPage.css';
 // import {arrayAllProduct} from '../../dataBase.js'
 import axios  from 'axios'
 import {db} from '../../fireBase.config'
+import Loading from '../Loading/Loading';
 
 class ProductPage extends Component{
    
@@ -44,7 +45,8 @@ class ProductPage extends Component{
         }
         data=arr;
       }
-      this.setState({theProduct:data.find((v)=>v.headerProduct.replace(" ","-")==this.props.match.params.productName)})
+      this.setState({theProduct:data.find((v)=>v.headerProduct.replace(" ","-")==this.props.match.params.productName)}
+                  ,()=>{if(this.state.theProduct==null)this.props.history.push("/NotFound")})//we dont have this product in database
     });
     }
     
@@ -91,7 +93,7 @@ class ProductPage extends Component{
 
    render(){
       if(this.state.theProduct==null){
-         return (<div>loading</div>)
+         return (<Loading/>)
       }
       return(
          <div className="ProductDiv">

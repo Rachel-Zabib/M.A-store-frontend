@@ -62,6 +62,7 @@ import {db} from '../../fireBase.config'
         this.calacTotal=this.calacTotal.bind(this)
         this.couponBtnClicked=this.couponBtnClicked.bind(this)
         this.getDateAndTimeOrder=this.getDateAndTimeOrder.bind(this)
+        this.getItemsInOrder=this.getItemsInOrder.bind(this)
         //call
         this.state.total=this.calacTotal();
         
@@ -194,20 +195,34 @@ import {db} from '../../fireBase.config'
             id:data.orderID,
             date:this.getDateAndTimeOrder(),
             userId:this.props.user.uid,
-            Name:this.nameInputRef.current.value+" "+this.lastNameInputRef.current.value,
+            name:this.nameInputRef.current.value+" "+this.lastNameInputRef.current.value,
             address:this.apartmentInputRef.current.value+"/"+this.buildingInputRef.current.value+" "+this.streetInputRef.current.value+" ,"+ this.cityInputRef.current.value,
             comments:this.commentsRef.current.value,
-            itemsInOrder:this.props.localStorageArr,
+            itemsInOrder:this.getItemsInOrder(),
             totalOrder:this.state.total,
             totalItems:this.totalItems(),
-            status:"Received"
+            status:"received"
         }
+        console.log(objOrder)
         localStorage.setItem("objOrder",JSON.stringify(objOrder) );//save object of order to order number page
         localStorage.setItem("cartArray","[]")//delete shopping cart
         this.props.localStorageChange();
         db.ref(`orders/${objOrder.id}`).set(objOrder);//save the order in database
        //להוסיף למשתמש בתכונה הזמנות את מספר ההזמנה בבסיס הנתונים***
         this.props.history.push("/checkout/payment/order_number");
+    }
+    getItemsInOrder(){
+        let arr=this.props.localStorageArr;
+        let itemsArr=  arr.map((v,i)=>{
+            return  {
+                headerProduct:v.headerProduct,
+                brandProduct:v.brandProduct,
+                amountProduct:v.amountProduct,
+                priceProduct:(v.discountProduct=="none")?v.priceProduct:v.discountProduct,
+                imgProduct:v.imgProduct
+                }
+            })
+        return itemsArr;
     }
     getDateAndTimeOrder(){
         let date=new Date();
