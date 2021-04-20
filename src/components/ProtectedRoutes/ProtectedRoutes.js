@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
-import {auth} from "../../fireBase.config"
+//import {auth} from "../../fireBase.config"
 import {saveUser,removeUser} from '../../actions/userAction'
 class ProtectedRoutes extends Component{
-    constructor(props){
-        super(props);
-        
-    }
+   
    
     render(){
         let {component: Component,...rest}=this.props;

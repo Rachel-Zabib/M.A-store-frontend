@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link, NavLink } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 import QuickView from '../QuickView/QuickView';
 import './product.css';
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -7,7 +7,7 @@ import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
 
 
 
-let raandom=(Math.floor(Math.random()*100))+""
+//let raandom=(Math.floor(Math.random()*100))+""
 class Product extends Component{
    
     constructor(props){
@@ -45,11 +45,11 @@ class Product extends Component{
              <i onClick={(e)=>{console.log("love");}} className="far fa-heart loveIcon"></i>
             <NavLink  className="linkStyle " to={`/product/${this.props.data.headerProduct.replace(" ","-")}`}>
                 <div  className="divProduct">
-                    <img  src={this.props.data.imgSrc[0]}/>
+                    <img  src={this.props.data.imgSrc[0]} alt=""/>
                     <br/>
-                    <a id="headerProduct" src="">{this.props.data.headerProduct}</a>
+                    <div id="headerProduct">{this.props.data.headerProduct}</div>
                     <div id="brandDiv">{this.props.data.brandProduct}</div>
-                    <div className="divPrice"><span className={`priceOfProduct ${this.props.data.discountProduct=="none"?"":"decoration"}`}>{this.props.data.priceProduct}</span><span className={`discountOfProduct ${this.props.data.discountProduct!="none"?"":"discNoDisplay"}`}>  {this.props.data.discountProduct}</span></div>      
+                    <div className="divPrice"><span className={`priceOfProduct ${this.props.data.discountProduct==="none"?"":"decoration"}`}>{this.props.data.priceProduct}</span><span className={`discountOfProduct ${this.props.data.discountProduct!=="none"?"":"discNoDisplay"}`}>  {this.props.data.discountProduct}</span></div>      
                    
                 </div>
                 </NavLink>

@@ -30,9 +30,9 @@ export default class ShoppingCart extends Component {
     }
     calcSubtotal(){
         let sum=0;
-        if(this.state.productInCart!=null)
+        if(this.state.productInCart!==null)
         { for(let item of this.state.productInCart) {
-            sum+=Number(item.discountProduct!="none"?item.discountProduct:item.priceProduct)*Number(item.amountProduct)
+            sum+=Number(item.discountProduct!=="none"?item.discountProduct:item.priceProduct)*Number(item.amountProduct)
              }
         }
         return sum;
@@ -58,7 +58,7 @@ export default class ShoppingCart extends Component {
 
     amountChanged(headerOfProduct,newAmount){
         let arrCart=[...this.state.productInCart];
-        let existsProduct=arrCart.filter((v)=>v.headerProduct==headerOfProduct)[0];
+        let existsProduct=arrCart.filter((v)=>v.headerProduct===headerOfProduct)[0];
         existsProduct.amountProduct=newAmount;
         this.setState({productInCart:arrCart},this.updateSubtotal,()=>this.setState({total:this.calacTotal()}));
         localStorage.setItem("cartArray",JSON.stringify(arrCart))
@@ -67,7 +67,7 @@ export default class ShoppingCart extends Component {
 
     deleteItem(headerOfProduct){
         let arrCart=[...this.state.productInCart];
-        let existsProductIndex=arrCart.findIndex((v)=>v.headerProduct==headerOfProduct);
+        let existsProductIndex=arrCart.findIndex((v)=>v.headerProduct===headerOfProduct);
         arrCart.splice(existsProductIndex,1);
         this.setState({productInCart:arrCart},this.updateSubtotal,()=>this.setState({total:this.calacTotal()}));
         localStorage.setItem("cartArray",JSON.stringify(arrCart));
@@ -75,7 +75,7 @@ export default class ShoppingCart extends Component {
     }
     totalItems(){
         let sumItems=0;
-        if(this.state.productInCart!=null)
+        if(this.state.productInCart!==null)
         { for(let item of this.state.productInCart) {
             sumItems+=Number(item.amountProduct)
              }
@@ -85,11 +85,11 @@ export default class ShoppingCart extends Component {
     couponBtnClicked(){
         let coupon=this.couponInput.current.value;
         let indexCoupon=this.state.couponsArr.indexOf(coupon);
-       if(indexCoupon==-1){//wrong code coupon
+       if(indexCoupon===-1){//wrong code coupon
             this.setState({couponLabelFailed:"Displaylabel",couponLabelAdd:"notDisplay"})
        }
        else{
-        this.setState({couponLabelFailed:"notDisplay",couponLabelAdd:"Displaylabel",discount:(indexCoupon==0)?"10%":"20₪"},()=>this.setState({total:this.calacTotal()}));
+        this.setState({couponLabelFailed:"notDisplay",couponLabelAdd:"Displaylabel",discount:(indexCoupon===0)?"10%":"20₪"},()=>this.setState({total:this.calacTotal()}));
        } 
 
     }
@@ -99,7 +99,7 @@ export default class ShoppingCart extends Component {
             <div className="shoppingCartDiv row justify-content-center">
                 <div className="productDiv col-12 col-sm-7">
                     <h3 className="H3">Items in cart</h3>
-                    {(this.state.productInCart!=null&&this.state.productInCart!=[])?(this.state.productInCart.map((productV,index)=>{
+                    {(this.state.productInCart!==null&&this.state.productInCart!==[])?(this.state.productInCart.map((productV,index)=>{
                         return <ItemCart key={index} data={productV} amountChanged={this.amountChanged} deleteItem={this.deleteItem}/>
                     })):"Empty cart"}
                     

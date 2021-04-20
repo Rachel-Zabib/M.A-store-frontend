@@ -104,7 +104,7 @@ import {db} from '../../fireBase.config'
 
     totalItems(){
         let sumItems=0;
-        if(this.props.localStorageArr!=null)
+        if(this.props.localStorageArr!==null)
         { for(let item of this.props.localStorageArr) {
             sumItems+=Number(item.amountProduct)
              }
@@ -114,9 +114,9 @@ import {db} from '../../fireBase.config'
 
     calcSubtotal(){
         let sum=0;
-        if(this.props.localStorageArr!=null)
+        if(this.props.localStorageArr!==null)
         { for(let item of this.props.localStorageArr) {
-            sum+=Number(item.discountProduct!="none"?item.discountProduct:item.priceProduct)*Number(item.amountProduct)
+            sum+=Number(item.discountProduct!=="none"?item.discountProduct:item.priceProduct)*Number(item.amountProduct)
              }
         }
         return sum;
@@ -133,11 +133,11 @@ import {db} from '../../fireBase.config'
     couponBtnClicked(){
         let coupon=this.CouponInput.current.value;
         let indexCoupon=this.state.couponsArr.indexOf(coupon);
-       if(indexCoupon==-1){//wrong code coupon
+       if(indexCoupon===-1){//wrong code coupon
             this.setState({couponLabelFailed:"Displaylabel",couponLabelAdd:"notDisplay"})
        }
        else{
-        this.setState({couponLabelFailed:"notDisplay",couponLabelAdd:"Displaylabel",discount:(indexCoupon==0)?"10%":"20₪"},()=>this.setState({total:this.calacTotal()}));
+        this.setState({couponLabelFailed:"notDisplay",couponLabelAdd:"Displaylabel",discount:(indexCoupon===0)?"10%":"20₪"},()=>this.setState({total:this.calacTotal()}));
        } 
        setTimeout(()=>this.setState({couponLabelFailed:"notDisplay",couponLabelAdd:"notDisplay"}),5000)
     }
@@ -146,7 +146,7 @@ import {db} from '../../fireBase.config'
         let flag=true;
 
         this.inputsRef.map((curRef,i)=>{
-            if(curRef.current.value=="")
+            if(curRef.current.value==="")
             {
                 this.labelsRef[i].current.className="showLabel"
                 flag=false;
@@ -154,23 +154,24 @@ import {db} from '../../fireBase.config'
             else{
                 this.labelsRef[i].current.className="hideLabel";
             }
+            return "";
         })
 
-        if(this.emailInputRef.current.value==""||!emailValidation(this.emailInputRef.current.value))
+        if(this.emailInputRef.current.value===""||!emailValidation(this.emailInputRef.current.value))
         {
             this.emailLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.emailLabelRef.current.className="hideLabel"
 
-        if(this.phoneInputRef.current.value==""||isNaN(Number(this.phoneInputRef.current.value))||!/^0\d([\d]{0,1})([-]{0,1})\d{7}$/.test(this.phoneInputRef.current.value))
+        if(this.phoneInputRef.current.value===""||isNaN(Number(this.phoneInputRef.current.value))||!/^0\d([\d]{0,1})([-]{0,1})\d{7}$/.test(this.phoneInputRef.current.value))
         {
             this.phoneLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.phoneLabelRef.current.className="hideLabel"
       
-        if(this.postInputRef.current.value==""||isNaN(Number(this.postInputRef.current.value))||this.postInputRef.current.value.length<7)
+        if(this.postInputRef.current.value===""||isNaN(Number(this.postInputRef.current.value))||this.postInputRef.current.value.length<7)
         {
             this.postLabelRef.current.className="showLabel"
             flag=false;
@@ -187,6 +188,7 @@ import {db} from '../../fireBase.config'
         }
         else
             window.scrollTo(0, 0);
+       
 
     }
 
@@ -218,7 +220,7 @@ import {db} from '../../fireBase.config'
                 headerProduct:v.headerProduct,
                 brandProduct:v.brandProduct,
                 amountProduct:v.amountProduct,
-                priceProduct:(v.discountProduct=="none")?v.priceProduct:v.discountProduct,
+                priceProduct:(v.discountProduct==="none")?v.priceProduct:v.discountProduct,
                 imgProduct:v.imgProduct
                 }
             })

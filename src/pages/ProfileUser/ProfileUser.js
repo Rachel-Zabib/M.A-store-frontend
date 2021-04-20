@@ -66,13 +66,13 @@ class ProfileUser extends Component {
     checkCorrectDetails(){
         let flag=true;
 
-        if(this.state.firstName=="")
+        if(this.state.firstName==="")
         {  this.nameLabelRef.current.className="showLabel"
            flag=false;}
         else{
             this.nameLabelRef.current.className="hideLabelprof";
         }
-        if(this.state.lastName=="")
+        if(this.state.lastName==="")
         {  this.lastNameLabelRef.current.className="showLabel"
             flag=false;}
         else{
@@ -94,7 +94,7 @@ class ProfileUser extends Component {
             <div className="profileUserDiv">
                 <div className="row justify-content-center">
                     <div className="sumDiv col-3">
-                        <img src="https://react-material-dashboard.devias.io/static/images/avatars/avatar_6.png"/>
+                        <img src="https://react-material-dashboard.devias.io/static/images/avatars/avatar_6.png" alt=""/>
                         <h3>header name</h3>
                         <p>UPLOAD PICTURE</p>
                     </div>
@@ -167,12 +167,12 @@ const mapStateToProps = store => ({
  
  export default connect(mapStateToProps,{saveUser,removeUser})(ProfileUser);
  
- function emailValidation(email)
- {
-    if (!email.match(/^[\w\d]+@\w+[.]\w+([.]\w+){0,1}$/))//null
-         return false;
-     return true;
- }
+//  function emailValidation(email)
+//  {
+//     if (!email.match(/^[\w\d]+@\w+[.]\w+([.]\w+){0,1}$/))//null
+//          return false;
+//      return true;
+//  }
 
 
 

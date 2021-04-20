@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 import Product from '../Product/Product'
 import './home.css'
-import axios  from 'axios'
+//import axios  from 'axios'
 import {db} from "../../fireBase.config"
 // import {arrayAllProduct} from '../../dataBase'
 
@@ -55,7 +55,7 @@ export default class Home extends Component {
   salesArray() { 
       
     let salesArr=[...this.state.arrayAllProduct];
-    salesArr=salesArr.filter((v)=>v.discountProduct!="none");
+    salesArr=salesArr.filter((v)=>v.discountProduct!=="none");
     this.setState({salesArr:salesArr});
   
   }
@@ -76,6 +76,7 @@ export default class Home extends Component {
                           {this.state.bestSellersArr.map((v,i)=>{
                             if(i<3)
                               return <Product data={v} key={i} localStorageChange={this.props.localStorageChange}/>
+                            return null;
                           })}
                            {/* <Product data={this.state.bestSellersArr[0]} localStorageChange={this.props.localStorageChange}/>
                             <Product data={this.state.bestSellersArr[1] } localStorageChange={this.props.localStorageChange}/>
@@ -89,8 +90,9 @@ export default class Home extends Component {
                               <Product data={bestSellersArr[5]}/> */}
                               {/* <div className="col-3 thirdProductToggle"><Product data={bestSellersArr[2]}/></div> */}
                               {this.state.bestSellersArr.map((v,i)=>{
-                                if(i==3)
+                                if(i===3)
                                   return <Product data={v} key={i} localStorageChange={this.props.localStorageChange}/>
+                                return null;
                               })}
                             {/* <Product data={this.state.bestSellersArr[3]} localStorageChange={this.props.localStorageChange}/> */}
                              
@@ -122,7 +124,7 @@ export default class Home extends Component {
     
     
             <div className="salesDiv">
-             <NavLink className="headerA" to="/store/sales"><p className="SalesP">Sales</p></NavLink>
+                <NavLink className="headerA" to="/store/sales"><p className="SalesP">Sales</p></NavLink>
                 <div id="carouselSalesCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
@@ -130,6 +132,7 @@ export default class Home extends Component {
                             {this.state.salesArr.map((v,i)=>{
                                   if(i<3)
                                     return <Product data={v} key={`${i}salesArr`} localStorageChange={this.props.localStorageChange}/>
+                                  return null;
                                 })}
                             {/* <Product data={this.state.salesArr[0]} localStorageChange={this.props.localStorageChange}/>
                             <Product data={this.state.salesArr[1]} localStorageChange={this.props.localStorageChange}/>
@@ -146,6 +149,7 @@ export default class Home extends Component {
                                   // if(i>=3 && i<6)
                                   if(i<3)
                                     return <Product data={v} key={`${i}sale`} localStorageChange={this.props.localStorageChange}/>
+                                  return null;
                                 })}
                               {/* <Product data={this.state.salesArr[0]} localStorageChange={this.props.localStorageChange}/>
                               <Product data={this.state.salesArr[1]} localStorageChange={this.props.localStorageChange}/>

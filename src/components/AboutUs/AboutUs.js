@@ -26,7 +26,7 @@ export default class AboutUs extends Component {
                     <br/><br/>
                 </p>
                 <iframe 
-                    src="https://www.youtube.com/embed/9iXuWmpUGDQ " style={{height:'360px', width:'780px', margin:'auto'}}>
+                    src="https://www.youtube.com/embed/9iXuWmpUGDQ " style={{height:'360px', width:'780px', margin:'auto'}} title="About Us" >
                 </iframe>
 
             </div>

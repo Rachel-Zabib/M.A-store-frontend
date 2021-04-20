@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
 import './contactUs.css'
 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+//import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import axios from 'axios';
 
 
@@ -25,21 +25,21 @@ export default class ContactUs extends Component {
 
     contactBtnClicked(){
         let flag=true;
-        if(this.nameInputRef.current.value=="")
+        if(this.nameInputRef.current.value==="")
         {
             this.nameLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.nameLabelRef.current.className="hideLabel"
 
-        if(this.emailInputRef.current.value==""||!emailValidation(this.emailInputRef.current.value))
+        if(this.emailInputRef.current.value===""||!emailValidation(this.emailInputRef.current.value))
         {
             this.emailLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.emailLabelRef.current.className="hideLabel"
 
-        if(this.phoneInputRef.current.value==""||isNaN(Number(this.phoneInputRef.current.value))||!/^0\d([\d]{0,1})([-]{0,1})\d{7}$/.test(this.phoneInputRef.current.value))//or empty or not numbers or not in form of phone
+        if(this.phoneInputRef.current.value===""||isNaN(Number(this.phoneInputRef.current.value))||!/^0\d([\d]{0,1})([-]{0,1})\d{7}$/.test(this.phoneInputRef.current.value))//or empty or not numbers or not in form of phone
         {
             this.phoneLabelRef.current.className="showLabel"
             flag=false;

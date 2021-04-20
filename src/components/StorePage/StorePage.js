@@ -3,10 +3,10 @@ import GridProduct from '../GridProduct/GridProduct';
 import ListCategory from '../ListCategory/ListCategory'
 import HeaderCategory from '../HeaderCategory/HeaderCategory'
 import './storePage.css';
-import propTypes from 'prop-types'
+//import propTypes from 'prop-types'
 import querystring from 'query-string'
 
-import axios  from 'axios'
+//import axios  from 'axios'
 import {db} from '../../fireBase.config'
 // import {arrayAllProduct} from '../../dataBase'
 
@@ -37,7 +37,7 @@ class StorePage extends Component{
       // axios.get('http://localhost:3000/arrayAllProduct')
       //     .then((response)=> {
       //       this.setState({arrayAllProduct:response.data},()=>{
-      //          if(this.state.arrProduct==undefined)
+      //          if(this.state.arrProduct===undefined)
       //             this.setState({arrProduct:response.data});//defaultProps-if we dont get props.arrproduct then the array is all product
       //          if(this.props.location){//if we have location prop we need show the search array in store
       //             let valSearch=querystring.parse(this.props.location.search).q;
@@ -60,7 +60,7 @@ class StorePage extends Component{
          data=arr;
          }
          this.setState({arrayAllProduct:data},()=>{
-            if(this.state.arrProduct==undefined)
+            if(this.state.arrProduct===undefined)
                this.setState({arrProduct:data});//defaultProps-if we dont get props.arrproduct then the array is all product
             if(this.props.location){//if we have location prop we need show the search array in store, we get  location props just in search otherwise we dont send the route props 
                let valSearch=querystring.parse(this.props.location.search).q;
@@ -75,7 +75,7 @@ class StorePage extends Component{
          valSearch=valSearch.toLocaleLowerCase()
          let allProductArr=this.state.arrayAllProduct;
          allProductArr=allProductArr.filter((v)=>{
-            return v.headerProduct.toLocaleLowerCase().indexOf(valSearch)!=-1||v.explanationproduct.toLocaleLowerCase().indexOf(valSearch)!=-1||v.brandProduct.toLocaleLowerCase().indexOf(valSearch)!=-1;
+            return v.headerProduct.toLocaleLowerCase().indexOf(valSearch)!==-1||v.explanationproduct.toLocaleLowerCase().indexOf(valSearch)!==-1||v.brandProduct.toLocaleLowerCase().indexOf(valSearch)!==-1;
          });
          return allProductArr;
       }
@@ -86,14 +86,14 @@ class StorePage extends Component{
       let filterArr=[...this.state.arrayAllProduct].map(a=>({...a}));
       let categoryToFilter=this.state.arrFilterList.category;
 
-      if(categoryToFilter!="Makeup"){//makeup is all the product
-         filterArr=filterArr.filter((v)=>v.categoryProduct==categoryToFilter);
+      if(categoryToFilter!=="Makeup"){//makeup is all the product
+         filterArr=filterArr.filter((v)=>v.categoryProduct===categoryToFilter);
       }
       let tempArr=[];
       let flagNoBrands=true;
       for(let brand in this.state.arrFilterList.brands){
          if(this.state.arrFilterList.brands[brand]){
-            tempArr=tempArr.concat(filterArr.filter((v)=>{return v.brandProduct==brand}) )
+            tempArr=tempArr.concat(filterArr.filter((v)=>{return v.brandProduct===brand}) )
             flagNoBrands=false;
          }
       }
@@ -114,7 +114,7 @@ class StorePage extends Component{
 
       changedBrandFilter(brandToFilter,boolBrand){
          let tempArray=Object.assign({}, this.state.arrFilterList);
-         // if(brandToFilter=="All Brands")
+         // if(brandToFilter==="All Brands")
          // {
          //    tempArray.brands["MAC"]=boolBrand;
          //    tempArray.brands["LORIAL PARIS"]=boolBrand;
@@ -150,6 +150,7 @@ class StorePage extends Component{
                productArr.sort((a,b)=>+b.priceProduct.replace("₪","")-(+a.priceProduct.replace("₪","")));
                break;
             }
+            default:{}
          }
          this.setState({arrProduct:productArr});
       }
@@ -161,8 +162,8 @@ class StorePage extends Component{
             <ListCategory clickedCategory={this.clickedCategory} changedBrandFilter={this.changedBrandFilter}/>
            <div className="col-10">
                <HeaderCategory categoryHeader={this.state.categoryHeader} sortChoiced={this.sortChoiced}/>
-               {/* if we in first render and this.state.arrProduc==undefined we display null and second render we display the real array*/}
-               {(this.state.arrProduct!=undefined&& this.state.arrProduct.length!=0)? <GridProduct arrProduct={this.state.arrProduct} localStorageChange={this.props.localStorageChange}/>:((this.state.arrProduct==undefined)?null:<div class="NoProductsDiv">No products</div>)}
+               {/* if we in first render and this.state.arrProduc===undefined we display null and second render we display the real array*/}
+               {(this.state.arrProduct!==undefined&& this.state.arrProduct.length!==0)? <GridProduct arrProduct={this.state.arrProduct} localStorageChange={this.props.localStorageChange}/>:((this.state.arrProduct===undefined)?null:<div class="NoProductsDiv">No products</div>)}
               
            </div>
         </div>

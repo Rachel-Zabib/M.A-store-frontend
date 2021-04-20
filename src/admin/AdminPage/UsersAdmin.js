@@ -11,7 +11,6 @@ import {
     SelectInput,
     TextInput,
     ReferenceInput,
-    BulkDeleteButton,
     Filter,
     PasswordInput 
 } from 'react-admin';

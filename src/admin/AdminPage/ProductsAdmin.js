@@ -4,20 +4,16 @@ import {
     Datagrid,
     TextField,
     EditButton,
-    EmailField,
     Edit,
     Create,
     SimpleForm,
     SelectInput,
     TextInput,
-    ReferenceInput,
     DeleteWithConfirmButton,
-    NumberField,
     NumberInput,
     ImageField,
-    Filter,
 } from 'react-admin';
-import ActiveField from "./ActiveField";
+
 
 // const ProductFilter = (props) => (
 //     <Filter {...props}>

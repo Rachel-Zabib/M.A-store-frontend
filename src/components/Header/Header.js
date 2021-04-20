@@ -18,7 +18,7 @@ class Header extends Component{
 
    deleteItem(headerOfProduct){
       let arrCart=[...this.props.localStorageArr];
-      let existsProductIndex=arrCart.findIndex((v)=>v.headerProduct==headerOfProduct);
+      let existsProductIndex=arrCart.findIndex((v)=>v.headerProduct===headerOfProduct);
       arrCart.splice(existsProductIndex,1);
       localStorage.setItem("cartArray",JSON.stringify(arrCart));
       this.props.localStorageChange();
@@ -26,16 +26,16 @@ class Header extends Component{
    
    calcSubtotal(){
       let sum=0;
-      if(this.props.localStorageArr!=null)
+      if(this.props.localStorageArr!==null)
       { for(let item of this.props.localStorageArr) {
-          sum+=Number(item.discountProduct!="none"?item.discountProduct:item.priceProduct)*Number(item.amountProduct)
+          sum+=Number(item.discountProduct!=="none"?item.discountProduct:item.priceProduct)*Number(item.amountProduct)
            }
       }
       return sum;
   }
   totalItems(){
    let sumItems=0;
-   if(this.props.localStorageArr!=null)
+   if(this.props.localStorageArr!==null)
    { for(let item of this.props.localStorageArr) {
        sumItems+=Number(item.amountProduct)
         }
@@ -45,7 +45,6 @@ class Header extends Component{
    signOutBtnClicked=()=>{
       auth.signOut().then(() => {
          this.props.removeUser();//call action to remove user from global state
-         // this.props.history.push("/")***
        }).catch((error) => {
              alert(error," try again");
        });
@@ -54,7 +53,7 @@ class Header extends Component{
    render(){
       return(  
          <header>
-            <a className=" aLogo" ><NavLink className="linkLogo" exact to="/"><img id="logoImg" src='/images/logo3.jpg'/></NavLink></a>
+            <a className=" aLogo" href="/"><NavLink className="linkLogo" exact to="/"><img id="logoImg" src='/images/logo3.jpg' alt=""/></NavLink></a>
             <nav className="navbar navbar-expand-lg navbar-dark "> 
                <div className="container-fluid">
                  
@@ -80,11 +79,11 @@ class Header extends Component{
                            </div>
                         </li>
                         <li className="nav-item">
-                           {/* <NavLink to="/wish" className="nav-link active"><i className="fas fa-heart"></i></NavLink> */}
-                           <a className="nav-link active" ><i className="fas fa-heart"></i></a>
+                           <NavLink to="/wish" className="nav-link active"><i className="fas fa-heart heartIcon"></i></NavLink>
+                           {/* <a className="nav-link active" ><i className="fas fa-heart"></i></a> */}
                         </li>
                         <li className="nav-item">
-                           {this.props.user==null
+                           {this.props.user===null
                               ?
                              <NavLink exact to="/login" className="nav-link active"><i className="fas fa-user"></i></NavLink>
                              :
@@ -94,7 +93,7 @@ class Header extends Component{
                                  </div>
                                  <ul class="dropdown-menu dropdownContentUser" aria-labelledby="dropdownUserSmall">
                                     <li><Link class="dropdown-item" exact to="/account/profile">My Account</Link></li>
-                                    <li><a class="dropdown-item" onClick={this.signOutBtnClicked}>Sign Out</a></li>
+                                    <li><a class="dropdown-item" href="/" onClick={this.signOutBtnClicked}>Sign Out</a></li>
                                  </ul>
                               </div>}
                         </li> 
@@ -140,11 +139,11 @@ class Header extends Component{
                            </div>
                         </li>
                         <li className="nav-item"> 
-                           {/* <NavLink to="/wish" className="nav-link active"><i className="fas fa-heart"></i></NavLink> */}
-                           <a className="nav-link active" ><i className="fas fa-heart heartIcon"></i></a>
+                           <NavLink to="/wish" className="nav-link active"><i className="fas fa-heart heartIcon"></i></NavLink>
+                           {/* <a className="nav-link active" ><i className="fas fa-heart heartIcon"></i></a> */}
                         </li>
                         <li className="nav-item">
-                           {this.props.user==null
+                           {this.props.user===null
                               ?
                              <NavLink exact to="/login" className="nav-link active"><i className="fas fa-user"></i></NavLink>
                              :
@@ -154,7 +153,7 @@ class Header extends Component{
                                  </div>
                                  <ul class="dropdown-menu dropdownContentUser" aria-labelledby="dropdownUser">
                                     <li><Link class="dropdown-item" exact to="/account/profile">My Account</Link></li>
-                                    <li><a class="dropdown-item" onClick={this.signOutBtnClicked}>Sign Out</a></li>
+                                    <li><a class="dropdown-item" href="/" onClick={this.signOutBtnClicked}>Sign Out</a></li>
                                  </ul>
                               </div>}
                         </li> 

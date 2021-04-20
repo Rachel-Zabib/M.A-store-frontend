@@ -81,7 +81,7 @@ import {saveUser} from '../../actions/userAction'
                         <input ref={this.passwordRef} className="inputs" type="password" id="pass" name="password" placeholder="Password" minlength="6" required/><br/>
                         <input type="checkbox" id="checkbox" name="remember-me" value="yes"/>
                         <label id="labelRemomber" for="remember-me"> Remember me</label><br/>
-                        <a id="forgatA">Forgot password?</a><br/>
+                        <span id="forgatA">Forgot password?</span><br/>
                         <button id="signInBtn" onClick={this.signInClicked}>Sign in</button>
                         <p>or</p>
                         <button className="signBtnGoogle" onClick={this.signInGoogleClicked}>Sign in with google</button><br/>

@@ -4,11 +4,6 @@ import { Redirect, Route } from 'react-router-dom';
 
 
 class ProtectedRouteCheckout extends Component{
-    constructor(props){
-        super(props);
-        
-    }
-   
     render(){
         let {component: Component,localStorageArr:arr,localStorageChange:func,...rest}=this.props;
         return(

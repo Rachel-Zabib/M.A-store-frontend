@@ -16,7 +16,7 @@ export default class ListCategory extends Component{
     }
 
     toggleMoreDiv(e){
-        let classToggle=(this.state.span1=="lessDiv")?"moreDiv":"lessDiv";
+        let classToggle=(this.state.span1==="lessDiv")?"moreDiv":"lessDiv";
         this.setState({span1:classToggle});
      }
 

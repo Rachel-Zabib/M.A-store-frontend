@@ -17,7 +17,7 @@ class ProtectedRouteAdmin extends Component{
             var userDetails = db.ref(`users/${this.props.user.uid}`);
             userDetails.on('value', (snapshot) => {
             const data = snapshot.val();
-            this.setState({userDetails:userDetails});})
+            this.setState({userDetails:data});})
         }
    
     }
@@ -31,7 +31,7 @@ class ProtectedRouteAdmin extends Component{
                         return <Loading/>//loading***
                     else
                     {
-                        if(this.state.userDetails.role=='user')
+                        if(this.state.userDetails.role==='user')
                             return (
                                 <Redirect
                                 to={{

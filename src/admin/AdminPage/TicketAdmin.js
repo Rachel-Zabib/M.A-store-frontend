@@ -8,8 +8,6 @@ import {
     SimpleForm,
     SelectInput,
     TextInput,
-    NumberField,
-    BooleanInput,
     EmailField,
     DateField,
     ShowButton,

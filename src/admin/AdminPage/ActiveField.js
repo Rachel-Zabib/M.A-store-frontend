@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 const ActiveField = ({ record = {}, source }) => {
     const classes = useStyles();
     return (
-        <p className={record[source]=="true"?classes.activeTrue:classes.activeFalse}>
+        <p className={record[source]==="true"?classes.activeTrue:classes.activeFalse}>
             {record[source]}
         </p>
       

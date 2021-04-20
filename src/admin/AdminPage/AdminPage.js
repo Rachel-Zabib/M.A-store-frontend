@@ -1,13 +1,15 @@
 import * as React from "react";
-import jsonServerProvider from 'ra-data-json-server';
+//import jsonServerProvider from 'ra-data-json-server';
 import { Provider } from 'react-redux';
 import { createHashHistory } from 'history';
-import {fetchUtils, Admin, Resource, EditGuesser, ListGuesser, ShowGuesser } from 'react-admin';
+import {fetchUtils, Admin, Resource} from 'react-admin';
+//import {EditGuesser, ListGuesser, ShowGuesser } from 'react-admin';
 import createAdminStore from '../../createAdminStore';
-import { UserList,UserCreateReactAdmin, UserEditReactAdmin ,UserListReactAdmin, UserEdit,UserCreate} from "./UsersAdmin";
-import {FirebaseAuthProvider} from 'react-admin-firebase';
-import firebase,{config} from '../../fireBase.config';
-import firebaseDataProvider from 'ra-data-firebase-client'
+import { UserList, UserEdit,UserCreate} from "./UsersAdmin";
+//import { UserCreateReactAdmin, UserEditReactAdmin ,UserListReactAdmin} from "./UsersAdmin";
+//import {FirebaseAuthProvider} from 'react-admin-firebase';
+//import firebase,{config} from '../../fireBase.config';
+//import firebaseDataProvider from 'ra-data-firebase-client'
 import { ProductsCreate, ProductsEdit, ProductsList } from "./ProductsAdmin";
 import UserIcon from '@material-ui/icons/Group';
 import Dashboard from './dashboard/Dashboard';

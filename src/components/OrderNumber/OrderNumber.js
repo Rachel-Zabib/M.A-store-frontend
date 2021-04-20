@@ -9,7 +9,7 @@ export default class OrderNumber extends Component {
     }
     backHome(){
         localStorage.removeItem("objOrder");
-        this.props.history.push("/");
+       // this.props.history.push("/");
     }
     componentWillUnmount(){
         localStorage.removeItem("objOrder");
@@ -21,7 +21,7 @@ export default class OrderNumber extends Component {
                 <p className="p1">We have recived your order</p>
                 <p>Your transaction number: <span><b>{this.objOrder.id}</b></span></p>
                 <p>You will receive a email to <b>{this.objOrder.email}</b> with your transaction number</p>
-                <a onClick={this.backHome.bind(this)}>Back to home</a>
+                <a href="/" onClick={this.backHome.bind(this)}>Back to home</a>
             </div>
         )
     }

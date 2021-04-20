@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 import './App.css';
 // import {arrayAllProduct} from './dataBase'
-import axios  from 'axios'
+//import axios  from 'axios'
 
 
 import Home from './components/Home/Home';
-import {Switch,Route,NavLink,BrowserRouter as Router, Link } from 'react-router-dom';
+import {Switch,Route,BrowserRouter as Router} from 'react-router-dom';
+//import {NavLink, Link } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import ContactUs from './components/ContactUs/ContactUs';
@@ -21,10 +22,9 @@ import SignUp from './components/SignUp/SignUp'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import ShoppingCart from './components/ShoppingCart/ShoppingCart'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
+//import $ from 'jquery';
+//import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import CheckoutPage from './components/CheckoutPage/CheckoutPage';
 import PaymentPage from './components/PaymentPage/PaymentPage';
 import OrderNumber from './components/OrderNumber/OrderNumber';
 import ProfileUser from './pages/ProfileUser/ProfileUser';
@@ -51,7 +51,7 @@ import Loading from './components/Loading/Loading'
     this.categoryStore=this.categoryStore.bind(this);
     this.salesStore=this.salesStore.bind(this);
     
-    this.state.localStorageArray=JSON.parse(localStorage.getItem("cartArray"))==null?[]:JSON.parse(localStorage.getItem("cartArray"));
+    this.state.localStorageArray=JSON.parse(localStorage.getItem("cartArray"))===null?[]:JSON.parse(localStorage.getItem("cartArray"));
     // auth.onAuthStateChanged((user) => {
     //   if (user) {
     //     var uid = user.uid;
@@ -77,8 +77,8 @@ import Loading from './components/Loading/Loading'
   }
 
   localStorageChange(boolDropdown){
-    this.setState({localStorageArray:JSON.parse(localStorage.getItem("cartArray"))==null?[]:JSON.parse(localStorage.getItem("cartArray"))});
-   if(boolDropdown==true)
+    this.setState({localStorageArray:JSON.parse(localStorage.getItem("cartArray"))===null?[]:JSON.parse(localStorage.getItem("cartArray"))});
+   if(boolDropdown===true)
    {
      this.setState({toggleDisplayDropdown:"DisplayBlockDropdown"})
      setTimeout(()=>this.setState({toggleDisplayDropdown:"DisplayNoneDropdown"}),5000)
@@ -110,7 +110,7 @@ import Loading from './components/Loading/Loading'
 
       auth.onAuthStateChanged((user) => {
         if (user) {
-          var uid = user.uid;
+          //var uid = user.uid;
           this.props.saveUser(user)
      
         } else {
@@ -134,7 +134,7 @@ import Loading from './components/Loading/Loading'
     
     // let categoryArr=[...arrayAllProduct];
     let categoryArr=[...this.state.arrayAllProduct];
-    categoryArr=categoryArr.filter((v)=>v.categoryProduct==category);
+    categoryArr=categoryArr.filter((v)=>v.categoryProduct===category);
     return <StorePage arrProduct={categoryArr} categoryFilter={category} categoryHeader={category} localStorageChange={this.localStorageChange}/>
 
   }
@@ -143,7 +143,7 @@ import Loading from './components/Loading/Loading'
     
     // let salesArr=[...arrayAllProduct];
     let salesArr=[...this.state.arrayAllProduct];
-    salesArr=salesArr.filter((v)=>v.discountProduct!="none");
+    salesArr=salesArr.filter((v)=>v.discountProduct!=="none");
     return <StorePage arrProduct={salesArr} categoryHeader={"Sales"} localStorageChange={this.localStorageChange}/>
 
   }

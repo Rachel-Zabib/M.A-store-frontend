@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './productPage.css';
 // import {arrayAllProduct} from '../../dataBase.js'
-import axios  from 'axios'
+//import axios  from 'axios'
 import {db} from '../../fireBase.config'
 import Loading from '../Loading/Loading';
 
@@ -16,7 +16,7 @@ class ProductPage extends Component{
          imgUrlDisplay:"",
          amountInput:1,
          theProduct:null
-         // theProduct:arrayAllProduct.find((v)=>v.headerProduct.replace(" ","-")==props.match.params.productName)
+         // theProduct:arrayAllProduct.find((v)=>v.headerProduct.replace(" ","-")===props.match.params.productName)
       }
 
       this.changeUrlDisplay=this.changeUrlDisplay.bind(this);
@@ -28,7 +28,7 @@ class ProductPage extends Component{
       //json server
       // axios.get('http://localhost:3000/arrayAllProduct')
       //     .then((response)=> {
-      //       this.setState({theProduct:response.data.find((v)=>v.headerProduct.replace(" ","-")==this.props.match.params.productName)})
+      //       this.setState({theProduct:response.data.find((v)=>v.headerProduct.replace(" ","-")===this.props.match.params.productName)})
       //     })
       //     .catch((error)=> {
       //       console.log(error);
@@ -45,8 +45,8 @@ class ProductPage extends Component{
         }
         data=arr;
       }
-      this.setState({theProduct:data.find((v)=>v.headerProduct.replace(" ","-")==this.props.match.params.productName)}
-                  ,()=>{if(this.state.theProduct==null)this.props.history.push("/NotFound")})//we dont have this product in database
+      this.setState({theProduct:data.find((v)=>v.headerProduct.replace(" ","-")===this.props.match.params.productName)}
+                  ,()=>{if(this.state.theProduct===null)this.props.history.push("/NotFound")})//we dont have this product in database
     });
     }
     
@@ -60,7 +60,7 @@ class ProductPage extends Component{
 
    toggleMoreDiv(e){
       let spanName=e.target.id;
-      let classToggle=(this.state[spanName]=="lessDiv")?"moreDiv":"lessDiv";
+      let classToggle=(this.state[spanName]==="lessDiv")?"moreDiv":"lessDiv";
       this.setState({[spanName]:classToggle})
    }
 
@@ -74,12 +74,12 @@ class ProductPage extends Component{
          imgProduct:this.state.theProduct.imgSrc[0]
       }
       let cartArr=JSON.parse(localStorage.getItem("cartArray"));
-      if(cartArr==null)
+      if(cartArr===null)
       {
          cartArr=[];
       }
-      let axistsProsuct=cartArr.filter((v)=>v.headerProduct==productToAdd.headerProduct)
-      if(axistsProsuct.length!=0){
+      let axistsProsuct=cartArr.filter((v)=>v.headerProduct===productToAdd.headerProduct)
+      if(axistsProsuct.length!==0){
          axistsProsuct[0].amountProduct=Number(axistsProsuct[0].amountProduct)+Number(productToAdd.amountProduct);
          axistsProsuct[0].discountProduct=productToAdd.discountProduct;
       }
@@ -92,7 +92,7 @@ class ProductPage extends Component{
    
 
    render(){
-      if(this.state.theProduct==null){
+      if(this.state.theProduct===null){
          return (<Loading/>)
       }
       return(
@@ -105,8 +105,8 @@ class ProductPage extends Component{
                <div>{this.state.theProduct.explanationproduct}</div><br/>
                <div id="categoryProduct">{this.state.theProduct.categoryProduct}</div>
                <br/>
-               <div className={this.state.theProduct.stockProduct=="in stock"?"grin":"red"}>{this.state.theProduct.stockProduct}</div>
-               <div><p className={`priceProduct ${this.state.theProduct.discountProduct=="none"?"":"decoration"}`}>{this.state.theProduct.priceProduct}</p><p className={`discountProduct ${this.state.theProduct.discountProduct!="none"?"":"discNoDisplay"}`}> {this.state.theProduct.discountProduct}</p></div>
+               <div className={this.state.theProduct.stockProduct==="in stock"?"grin":"red"}>{this.state.theProduct.stockProduct}</div>
+               <div><p className={`priceProduct ${this.state.theProduct.discountProduct==="none"?"":"decoration"}`}>{this.state.theProduct.priceProduct}</p><p className={`discountProduct ${this.state.theProduct.discountProduct!=="none"?"":"discNoDisplay"}`}> {this.state.theProduct.discountProduct}</p></div>
                <input onChange={(e)=>this.amountChanged(e.target.value)} id="amountProduct" type="number" name="amount" value={this.state.amountInput} min="0"/>
                <button /*type="button" data-bs-toggle="modal"  data-bs-target={`#idShoppingCart`}*/ id="addToShoppingBtn" onClick={this.addProductToCart}>add to shopping cart</button>
                <span onClick="changeLove(e)"><i className="far fa-heart loveIconn"></i></span>
@@ -131,12 +131,11 @@ class ProductPage extends Component{
             </div>
             <div className="imagesProduct">
                <div className="imageProductDisplay">
-                  <img src={this.state.imgUrlDisplay||this.state.theProduct.imgSrc[0]}></img>
+                  <img src={this.state.imgUrlDisplay||this.state.theProduct.imgSrc[0]} alt=""></img>
                </div>
                <ul className="galleryProduct">
                   {(this.state.theProduct.imgSrc).map((v,k)=>{
-                     console.log(v);
-                     return  <li key={k} onClick={(e)=>this.changeUrlDisplay(e.target.src)}><img src={v}></img></li>
+                     return  <li key={k} onClick={(e)=>this.changeUrlDisplay(e.target.src)}><img src={v} alt=""/></li>
                   })}  
                </ul>
              
@@ -149,4 +148,4 @@ class ProductPage extends Component{
 }
 export default ProductPage;
 
-{/* <i class="fas fa-heart"></i>   love full icon*/}
+//  <i class="fas fa-heart"></i>   /*love full icon*/

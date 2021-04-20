@@ -8,8 +8,10 @@ import {
     USER_LOGOUT,
 } from 'react-admin';
 import userReducer from './reducers/userReducer'
-import thunk from 'redux-thunk'
-export default ({
+import thunk from 'redux-thunk';
+
+
+let func= ({
     authProvider,
     dataProvider,
     history,
@@ -57,3 +59,5 @@ export default ({
     sagaMiddleware.run(saga);
     return store;
 };
+
+export default func;

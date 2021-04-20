@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+//import { NavLink } from 'react-router-dom'
 import SignUp from '../SignUp/SignUp'
 import './checkoutPage.css'
 
@@ -45,7 +45,7 @@ export default class CheckoutPage extends Component {
                             <input className="Inputs" type="password" id="Pass" placeholder="Password" minlength="6" required/><br/>
                             <input type="checkbox" id="checkbox" name="remember-me" value="yes"/>
                             <label id="LabelRemomber" for="remember-me"> Remember me</label><br/>
-                            <a id="ForgatA">Forgot password?</a><br/>
+                            {/* <p id="ForgatA" >Forgot password?</p><br/> */}
                             <button className="checkoutBtn">Proceed to checkout</button>
                         </form>
                     </div>

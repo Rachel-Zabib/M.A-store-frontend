@@ -10,7 +10,6 @@ import {
     TextInput,
     DeleteWithConfirmButton,
     NumberField,
-    ReferenceField,
     ShowButton,
     ArrayField,
     SimpleShowLayout,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import propTypes from 'prop-types'
+//import propTypes from 'prop-types'
 import './signUp.css'
 import {auth,db} from "../../fireBase.config"
 import firebase from "firebase/app"
@@ -12,7 +12,6 @@ class SignUp extends Component {
         this.state={
             displayLabel:false
         }
-
         this.nameLabelRef=React.createRef();
         this.nameInputRef=React.createRef();
         this.lastNameLabelRef=React.createRef();
@@ -34,20 +33,20 @@ class SignUp extends Component {
         e.preventDefault();
         this.setState({displayLabel:false})
         let flag=true;
-        if(this.nameInputRef.current.value=="")
+        if(this.nameInputRef.current.value==="")
         {
             this.nameLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.nameLabelRef.current.className="hideLabel";
-        if(this.lastNameInputRef.current.value=="")
+        if(this.lastNameInputRef.current.value==="")
         {
             this.lastNameLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.lastNameLabelRef.current.className="hideLabel";
 
-        if(this.emailInputRef.current.value==""||!emailValidation(this.emailInputRef.current.value))
+        if(this.emailInputRef.current.value===""||!emailValidation(this.emailInputRef.current.value))
         {
             this.emailLabelRef.current.className="showLabel"
             flag=false;
@@ -62,7 +61,7 @@ class SignUp extends Component {
         else this.passLabelRef.current.className="hideLabel";
 
 
-        if(this.passInputRef.current.value!=this.passConfirmInputRef.current.value)
+        if(this.passInputRef.current.value!==this.passConfirmInputRef.current.value)
         {
             this.passConfirmLabelRef.current.className="showLabel"
             flag=false;
@@ -130,7 +129,7 @@ class SignUp extends Component {
         
         let userDetails={
             id:user.uid,//*** 
-            firstName:(this.nameInputRef.current.value.length!=0)?this.nameInputRef.current.value.length:user.displayName,
+            firstName:(this.nameInputRef.current.value.length!==0)?this.nameInputRef.current.value.length:user.displayName,
             lastName:this.lastNameInputRef.current.value,
             email:this.emailInputRef.current.value,
             phone:"",

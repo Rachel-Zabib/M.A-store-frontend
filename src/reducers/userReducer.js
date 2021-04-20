@@ -1,11 +1,11 @@
 import {SAVE_USER,REMOVE_USER} from '../actions/constants'
-import {auth} from "../fireBase.config"
+//import {auth} from "../fireBase.config"
 
 
 let initialState={user:null};
 
 
-export default function(state = initialState , action) {
+export default function userReducer(state = initialState , action) {
     switch (action.type) {
         case SAVE_USER:
             return {

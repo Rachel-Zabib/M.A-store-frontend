@@ -17,21 +17,21 @@ export default class CreditCardPage extends Component {
     }
     cardBtnClicked(){
         let flag=true;
-        if(this.cardInputRef.current.value.length!=16||isNaN(Number(this.cardInputRef.current.value)))
+        if(this.cardInputRef.current.value.length!==16||isNaN(Number(this.cardInputRef.current.value)))
         {
             this.cardLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.cardLabelRef.current.className="hideLabelcard"
 
-        if(this.IDInputRef.current.value.length!=9||isNaN(Number(this.IDInputRef.current.value)))
+        if(this.IDInputRef.current.value.length!==9||isNaN(Number(this.IDInputRef.current.value)))
         {
             this.IDLabelRef.current.className="showLabel"
             flag=false;
         }
         else this.IDLabelRef.current.className="hideLabelcard"
       
-        if(this.securityInputRef.current.value.length!=3||isNaN(Number(this.securityInputRef.current.value)))
+        if(this.securityInputRef.current.value.length!==3||isNaN(Number(this.securityInputRef.current.value)))
         {
             this.securityLabelRef.current.className="showLabel"
             flag=false;

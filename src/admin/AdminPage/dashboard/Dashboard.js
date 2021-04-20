@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, CardContent, CardHeader } from '@material-ui/core';
+//import { Card, CardContent, CardHeader } from '@material-ui/core';
 import CardWithIcon from "./CardWithIcon";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import DollarIcon from '@material-ui/icons/AttachMoney';
@@ -10,7 +10,7 @@ import {useState,useEffect,useCallback} from 'react';
 
 
 const Spacer = () => <span style={{ width: '1em' }} />;
-const VerticalSpacer = () => <span style={{ height: '1em' }} />;
+//const VerticalSpacer = () => <span style={{ height: '1em' }} />;
 
 export default function Dashboard(){
     const [state, setState] = useState({revenue:"",nbOrders:"",nbReceivedOrders:"",nbUsers:""});

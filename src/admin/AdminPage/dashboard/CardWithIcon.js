@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FC, createElement } from 'react';
+import {createElement } from 'react';
 import { Card, Box, Typography, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
