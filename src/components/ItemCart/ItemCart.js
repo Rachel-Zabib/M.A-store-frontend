@@ -28,7 +28,7 @@ export default class ItemCart extends Component {
                     amount: <input className="amountInput" type="number" min="1" value={this.props.data.amountProduct} onChange={(e)=>this.props.amountChanged(this.props.data.headerProduct,e.target.value)} />
 
                 </div>
-                <div className="sumDiv  col-3">
+                <div className="sumdiv  col-3">
                     <p className="sumIcon" onClick={()=>this.props.deleteItem(this.props.data.headerProduct)}><i class="far fa-trash-alt"></i></p>
                     <p className="sumP">{((this.props.data.discountProduct)==="none"?this.props.data.priceProduct:this.props.data.discountProduct)*this.props.data.amountProduct}₪</p>
                    

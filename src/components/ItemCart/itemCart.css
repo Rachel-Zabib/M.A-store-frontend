@@ -7,7 +7,7 @@
 }
 
 .imgDiv{
-    width: 100%;
+    /* width: 100%; */
 }
 .imgDiv img{
     width: 100%;
@@ -39,7 +39,7 @@
     font-size: 20px;
     color: red;
 }
-.sumDiv{
+.sumdiv{
     text-align: center;
     /* justify-items: center; */
 }
